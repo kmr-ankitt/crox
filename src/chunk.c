@@ -1,5 +1,6 @@
 #include "chunk.h"
 #include "memory.h"
+#include <stdint.h>
 
 /*
  * initializes a dynamically allocated chunk structure
@@ -32,4 +33,12 @@ void writeChunk(Chunk *chunk, uint8_t byte){
 
   chunk->code[chunk->count] = byte;
   chunk->count++;
+}
+
+/*
+ * ceallocate all the memory and then zero out the fields.
+*/
+void freeChunk(Chunk* chunk){
+  FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+  initChunk(chunk);
 }
