@@ -3,5 +3,5 @@
 ## Building and Running
 
 ```bash
-ninja
+make run
 ```
